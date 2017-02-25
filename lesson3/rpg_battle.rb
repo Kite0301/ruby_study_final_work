@@ -43,5 +43,3 @@ action_data.each do |action|
   puts "Enterで次のアクションに進む"
   gets
 end
-
-p player_data
