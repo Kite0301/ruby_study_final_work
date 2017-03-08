@@ -9,6 +9,7 @@ elsif year % 4 == 0
   puts "#{year}年は夏季オリンピックが開催されました！"
 else
   puts "#{year}年は夏季オリンピックイヤーではありません。"
+end
 
 __END__
 以下コメント
