@@ -19,6 +19,10 @@ class Character
     puts "#{@name}の体力が10ポイント回復した。"
   end
 
+  def act
+    puts "#{@name}はぼーっとしていた。"
+  end
+
   private
 
   def hungry?
@@ -56,7 +60,7 @@ class Dog < Character
   private
 
   def fast?
-    @speed > 70
+    return @speed > 70
   end
 end
 
