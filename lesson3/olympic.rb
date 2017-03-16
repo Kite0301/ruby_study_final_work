@@ -11,88 +11,7 @@ olympics = [
   {year: 1932, city: "ロサンゼルス", country: "アメリカ", area: "北米"},
 ]
 
-# 引数なしメソッド
-def show_all_olympics
-  olympics.each do |olympic|
-    puts "---------------------"
-    puts "#{olympic[:year]}年#{olympic[:city]}大会"
-    puts "国：#{olympic[:country]}"
-    if olympic[:note]
-      puts "豆知識：#{olympic[:note]}"
-    end
-  end
-end
-
-# 引数ありメソッド
-def show_olympics_by_country(country)
-  olympics.each do |olympic|
-    if olympic[:country] == country
-      puts "---------------------"
-      puts "#{olympic[:year]}年#{olympic[:city]}大会"
-      puts "国：#{olympic[:country]}"
-      if olympic[:note]
-        puts "豆知識：#{olympic[:note]}"
-      end
-    end
-  end
-end
-
-# 引数複数メソッド
-def show_olympics_between(min_year, max_year)
-  olympics.each do |olympic|
-    if min_year <= olympic[:year] && olympic[:year] <= max_year
-      puts "---------------------"
-      puts "#{olympic[:year]}年#{olympic[:city]}大会"
-      puts "国：#{olympic[:country]}"
-      if olympic[:note]
-        puts "豆知識：#{olympic[:note]}"
-      end
-    end
-  end
-end
-
-# 戻り値のあるメソッド
-def count_olympics(area)
-  count = 0
-  olympics.each do |olympic|
-    if olympic[:area] == area
-      count += 1
-    end
-  end
-  return count
-end
-
-# 真偽値を返すメソッド(1)
-def is_olympic_year?(year)
-  return year % 4 == 0
-end
-
-# 真偽値を返すメソッド(2) 途中にreturnがあるver レッスン1で扱った内容
-def is_olympic_year?(year)
-  if year < 1896
-    return false
-  end
-  if year % 4 != 0
-    return false
-  end
-  if year == 1916 || year == 1940 || year == 1944
-    return false
-  end
-  return true
-end
-
-# 真偽値を返すメソッド(3)　途中にreturnがあるver
-def held_olympic?(country)
-  olympics.each do |olympic|
-    if olympic[:country] == country
-      return true
-    end
-  end
-  return false
-end
-
-# ハッシュを引数にとるメソッド
-def show_olympic_data(olympic)
+def show(olympic)
   puts "---------------------"
   puts "#{olympic[:year]}年#{olympic[:city]}大会"
   puts "国：#{olympic[:country]}"
@@ -101,20 +20,21 @@ def show_olympic_data(olympic)
   end
 end
 
-# ハッシュを返すメソッド
-def get_olympic_data_with_year(year)
+def show_olympics(olympics, options={})
+  min_year = 0
+  max_year = 9999
+  if options[:min_year]
+    min_year = options[:min_year]
+  end
+  if options[:max_year]
+    max_year = options[:max_year]
+  end
+
   olympics.each do |olympic|
-    if olympic[:year] == year
-      return olympic
+    if min_year <= olympic[:year] && olympic[:year] <= max_year
+      show olympic
     end
   end
 end
 
-# デフォルト引数
-def show_olympics_between(min_year, max_year=9999)
-  olympics.each do |olympic|
-    if min_year <= olympic[:year] && olympic[:year] <= max_year
-      show_olympic_data(olympic)
-    end
-  end
-end
+show_olympics(olympics, {max_year: 1900})
