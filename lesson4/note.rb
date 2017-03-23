@@ -86,7 +86,7 @@ loop do
     puts "#{index}番目のメモ"
     note.show
     user_input = Note.get_note_data
-    note.update(user_input)
+    note.update(title: user_input[:title], content: user_input[:content])
     note.show
   elsif action == 3
     puts "メモを作りますか、Todoを作りますか"
@@ -94,9 +94,9 @@ loop do
     user_select = gets.chomp.to_i
     user_input = Note.get_note_data
     if user_select == 1
-      new_item = Note.new(user_input)
+      new_item = Note.new(title: user_input[:title], content: user_input[:content])
     else
-      new_item = Todo.new(user_input)
+      new_item = Todo.new(title: user_input[:title], content: user_input[:content])
     end
     notes.push(new_item)
     new_item.show
