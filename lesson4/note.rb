@@ -67,7 +67,7 @@ end
 
 notes = [
   Note.new(title: "a", content: "b"),
-  Todo.new(title: "c", content: "d"),
+  Todo.new(title: "c", content: "d")
 ]
 
 puts "メモアプリです"
