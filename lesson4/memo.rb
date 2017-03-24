@@ -1,4 +1,4 @@
-class Note
+class Memo
   def initialize(title: "なし", content: "なし")
     @title = title
     @content = content
@@ -21,7 +21,7 @@ class Note
     end
   end
 
-  def Note.get_note_data
+  def Memo.get_note_data
     puts "新しいタイトルを入力してください(Enterでスキップ)"
     title = gets.chomp
     puts "新しい内容を入力してください(Enterでスキップ)"
@@ -30,7 +30,7 @@ class Note
   end
 end
 
-class Todo < Note
+class Todo < Memo
   def initialize(title: "なし", content: "なし")
     super
     @done = false
@@ -66,7 +66,7 @@ class Todo < Note
 end
 
 notes = [
-  Note.new(title: "a", content: "b"),
+  Memo.new(title: "a", content: "b"),
   Todo.new(title: "c", content: "d")
 ]
 
@@ -85,16 +85,16 @@ loop do
     note = notes[index - 1]
     puts "#{index}番目のメモ"
     note.show
-    user_input = Note.get_note_data
+    user_input = Memo.get_note_data
     note.update(title: user_input[:title], content: user_input[:content])
     note.show
   elsif action == 3
     puts "メモを作りますか、Todoを作りますか"
     puts "(1: メモ, それ以外: Todo)"
     user_select = gets.chomp.to_i
-    user_input = Note.get_note_data
+    user_input = Memo.get_note_data
     if user_select == 1
-      new_item = Note.new(title: user_input[:title], content: user_input[:content])
+      new_item = Memo.new(title: user_input[:title], content: user_input[:content])
     else
       new_item = Todo.new(title: user_input[:title], content: user_input[:content])
     end
