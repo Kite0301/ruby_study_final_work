@@ -27,7 +27,11 @@ def show_olympics(min_year: 0, max_year: 9999)
   end
 end
 
-show_olympics(max_year: 1900)
+puts “1900年から1920年までに開催されたオリンピック”
+show_olympics(min_year: 1900, max_year:1920)
+
+puts “1920年以前に開催されたオリンピック”
+show_olympics(max_year: 1920)
 
 __END__
 以下コメント
