@@ -23,14 +23,6 @@ class Memo
       puts "内容を変更しました"
     end
   end
-
-  def Memo.get_note_data
-    puts "新しいタイトルを入力してください"
-    title = gets.chomp
-    puts "新しい内容を入力してください"
-    content = gets.chomp
-    return {title: title, content: content}
-  end
 end
 
 class Todo < Memo
@@ -79,8 +71,8 @@ notes = [
 puts "メモアプリです"
 loop do
   puts "何をしますか？番号を入力してください"
-  puts "1: 一覧, 2: 編集, 3: 追加, それ以外: 終了"
-  action = gets.chomp.to_i
+  puts "1: 一覧, 2: 編集, それ以外: 終了"
+  action = gets.chomp
   if action == 1
     notes.each do |note|
       note.show
@@ -91,21 +83,12 @@ loop do
     note = notes[index - 1]
     puts "#{index}番目のメモ"
     note.show
-    user_input = Memo.get_note_data
-    note.update(title: user_input[:title], content: user_input[:content])
+    puts "タイトルを入力してください"
+    title = gets.chomp
+    puts "内容を入力してください"
+    content = gets.chomp
+    note.update(title: title, content: content)
     note.show
-  elsif action == 3
-    puts "メモを作りますか、Todoを作りますか"
-    puts "(1: メモ, それ以外: Todo)"
-    user_select = gets.chomp.to_i
-    user_input = Memo.get_note_data
-    if user_select == 1
-      new_item = Memo.new(title: user_input[:title], content: user_input[:content])
-    else
-      new_item = Todo.new(title: user_input[:title], content: user_input[:content])
-    end
-    notes.push(new_item)
-    new_item.show
   else
     break
   end
@@ -124,4 +107,4 @@ initializeメソッド：あり
 インスタンス変数：あり
 attr_accessor：(あり)
 private：あり
-クラスメソッド：あり
+クラスメソッド：なし
