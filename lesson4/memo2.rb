@@ -29,26 +29,26 @@ class Todo < Memo
   attr_accessor :done
 
   def initialize(title:, content:)
-    super
+    super(title: title, content: content)
     self.done = false
   end
 
   def show
     super
     if self.done
-      puts "完了済"
+      puts "完了済みです"
     else
-      puts "未完了"
+      puts "まだ完了していません"
     end
   end
 
-  def update(title:, content:)
+  def update(title:, content:, is_done:)
     puts "完了状態を変更しますか？（1: する, それ以外: しない）"
     action = gets.chomp.to_i
     if action == 1
       toggle_done_state
     end
-    super
+    super(title: title, content: content)
   end
 
   private
@@ -71,8 +71,8 @@ notes = [
 puts "メモアプリです"
 loop do
   puts "何をしますか？番号を入力してください"
-  puts "1: 一覧, 2: 編集, それ以外: 終了"
-  action = gets.chomp
+  puts "1: 一覧, 2: 編集, 3: 追加, それ以外: 終了"
+  action = gets.chomp.to_i
   if action == 1
     notes.each do |note|
       note.show
@@ -83,12 +83,21 @@ loop do
     note = notes[index - 1]
     puts "#{index}番目のメモ"
     note.show
-    puts "タイトルを入力してください"
-    title = gets.chomp
-    puts "内容を入力してください"
-    content = gets.chomp
-    note.update(title: title, content: content)
+    user_input = Memo.get_note_data
+    note.update(title: user_input[:title], content: user_input[:content])
     note.show
+  elsif action == 3
+    puts "メモを作りますか、Todoを作りますか"
+    puts "(1: メモ, それ以外: Todo)"
+    user_select = gets.chomp.to_i
+    user_input = Memo.get_note_data
+    if user_select == 1
+      new_item = Memo.new(title: user_input[:title], content: user_input[:content])
+    else
+      new_item = Todo.new(title: user_input[:title], content: user_input[:content])
+    end
+    notes.push(new_item)
+    new_item.show
   else
     break
   end
@@ -107,4 +116,4 @@ initializeメソッド：あり
 インスタンス変数：あり
 attr_accessor：(あり)
 private：あり
-クラスメソッド：なし
+クラスメソッド：あり
