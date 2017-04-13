@@ -1,3 +1,4 @@
+require 'date'
 require './memo'
 require './diary'
 
