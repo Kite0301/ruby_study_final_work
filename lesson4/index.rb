@@ -4,13 +4,13 @@ require "./drink"
 foods = [
   Food.new(name: "ハンバーガー", price: 500, calorie: 500),
   Food.new(name: "唐揚げ定食", price: 700, calorie: 600),
-  Food.new(name: "海鮮丼", price: 1000, calorie: 450),
+  Food.new(name: "海鮮丼", price: 1000, calorie: 450)
 ]
 
 drinks = [
   Drink.new(name: "オレンジジュース", price: 300, size: 300),
   Drink.new(name: "コーヒー", price: 400, size: 250),
-  Drink.new(name: "ミネラルウォーター", price: 200, size: 500),
+  Drink.new(name: "ミネラルウォーター", price: 200, size: 500)
 ]
 
 total_price = 0
