@@ -1,6 +1,6 @@
 # Foodクラスのみの状態
 
-# food.rb
+# ---------- food.rb ---------- #
 
 class Food
   attr_accessor :name
@@ -22,7 +22,7 @@ class Food
   end
 end
 
-# index.rb
+# ---------- index.rb ---------- #
 
 # require "./food"
 
