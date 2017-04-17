@@ -19,7 +19,7 @@ puts "--- お食事 ---"
 
 order = 0
 foods.each do |food|
-  puts "#{order}. #{food.name}"
+  puts "#{order}. #{food.info}"
   order += 1
 end
 
@@ -40,7 +40,7 @@ puts "--- お飲み物 ---"
 
 order = 0
 drinks.each do |drink|
-  puts "#{order}. #{drink.name}"
+  puts "#{order}. #{drink.info}"
   order += 1
 end
 
