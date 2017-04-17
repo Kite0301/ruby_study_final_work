@@ -1,8 +1,8 @@
-class Food
+class Menu
   attr_accessor :name
   attr_accessor :price
 
-  def initialize(name:, price:)
+  def initialize(name:, price:, type: '')
     self.name = name
     self.price = price
   end
@@ -12,19 +12,15 @@ class Food
   end
 end
 
-class Drink
-  attr_accessor :name
-  attr_accessor :price
+class Food < Menu
+end
+
+class Drink < Menu
   attr_accessor :type
 
   def initialize(name:, price:, type:)
-    self.name = name
-    self.price = price
+    super
     self.type = type
-  end
-
-  def price_with_tax
-    return (self.price * 1.08).to_i
   end
 end
 
@@ -99,4 +95,5 @@ __END__
 - [x] attr_accessor
 - [ ] private
 - [ ] クラスメソッド
-- [ ] 継承
+- [x] 継承
+- [x] super
