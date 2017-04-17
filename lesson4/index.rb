@@ -20,7 +20,7 @@ foods = [
 
 puts "--- お食事 ---"
 
-order = 1
+order = 0
 foods.each do |food|
   puts "#{order}. #{food.name}"
   order += 1
@@ -29,8 +29,22 @@ end
 puts "--------------"
 puts "メニューを選んでください"
 
-food_number = gets.chomp.to_i
-food = foods[food_number - 1]
+food_order = gets.chomp.to_i
+food = foods[food_order]
 
 puts "金額: #{food.price}円"
 puts "税込価格: #{food.price_with_tax}円"
+
+__END__
+
+指標
+- [x] クラス
+- [x] インスタンス
+- [x] 複数のインスタンス
+- [x] インスタンスメソッド
+- [x] initializeメソッド
+- [x] インスタンス変数
+- [x] attr_accessor
+- [ ] private
+- [ ] クラスメソッド
+- [ ] 継承
