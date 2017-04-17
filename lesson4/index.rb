@@ -1,28 +1,5 @@
-class Menu
-  attr_accessor :name
-  attr_accessor :price
-
-  def initialize(name:, price:, type: '')
-    self.name = name
-    self.price = price
-  end
-
-  def price_with_tax
-    return (self.price * 1.08).to_i
-  end
-end
-
-class Food < Menu
-end
-
-class Drink < Menu
-  attr_accessor :type
-
-  def initialize(name:, price:, type:)
-    super
-    self.type = type
-  end
-end
+require "./food"
+require "./drink"
 
 foods = [
   Food.new(name: "ハンバーガー", price: 500),
